@@ -1,0 +1,39 @@
+﻿<Window x:Class="Nonogram.UI.Windows.SettingsWindow"
+        Name="SettingsWnd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:vm="clr-namespace:Nonogram.UI.ViewModels" 
+        d:DataContext="{d:DesignInstance Type=vm:SettingsVm, IsDesignTimeCreatable=False}"
+        mc:Ignorable="d"
+        Title="Настройки" ResizeMode="CanMinimize" 
+        SizeToContent="WidthAndHeight" Icon="/nonogram.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="Формат файла кроссворда" HorizontalAlignment="Left" Margin="10,5,5,5" VerticalAlignment="Center" VerticalContentAlignment="Center" Padding="5,3,5,3"/>
+        <ComboBox Grid.Row="0"  Grid.Column="1" ItemsSource ="{Binding FileTypes, Mode=OneWay}" SelectedIndex="{Binding FileCreatorIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  IsReadOnly ="True"  HorizontalAlignment="Left" VerticalAlignment="Center" Width="240" Margin="5,5,10,5" Padding="6,3,5,3"/>
+        <Label Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Content="Шаблоны адресов для скачивания кроссвордов:" HorizontalAlignment="Left" Margin="10,5,5,5" VerticalAlignment="Center" Padding="5,5,5,5" VerticalContentAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Patterns, Mode=TwoWay, UpdateSourceTrigger=LostFocus}" Height="150" Margin="10,5,10,5" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True"/>
+        <Button Grid.Row="3" Grid.Column="0" Command="{Binding DefaultCmd}" Content="Настройки по умолчанию" Margin="10,5,5,10" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Button Grid.Row="3" Grid.Column="1" Content="Закрыть" Margin="5,5,10,10" Width="160" HorizontalAlignment="Right" VerticalAlignment="Center" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:CallMethodAction 
+                        TargetObject="{Binding ElementName=SettingsWnd}" 
+                        MethodName="Close"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+    </Grid>
+</Window>

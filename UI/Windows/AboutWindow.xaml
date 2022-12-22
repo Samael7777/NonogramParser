@@ -1,0 +1,73 @@
+﻿<Window x:Class="Nonogram.UI.Windows.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="О программе" ResizeMode="CanMinimize" SizeToContent="WidthAndHeight">
+        
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image HorizontalAlignment="Left" Height="100" Margin="10,10,10,20" VerticalAlignment="Top" Width="100" Source="/Assets/Nonogram.jpg"/>
+        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0,0,10,0">
+            <Label Content="Парсер японских кроссвордов" HorizontalAlignment="Center" FontSize="18" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Center" FontSize="14">
+                С сайта 
+                <Hyperlink NavigateUri="https://www.nonograms.ru">
+                    www.nonograms.ru 
+                </Hyperlink>
+            </TextBlock>
+            <Label Content="Автор : Кутьин Вадим ©2022" HorizontalAlignment="Center" FontSize="14"/>
+            <TextBlock Padding="0,10,0,0">В настройках можно задать шаблон ссылки для скачивания кроссвордов.</TextBlock>
+            <TextBlock>В шаблоне строка $(id) меняется на номер кроссворда.</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="14" FontWeight="Bold">Сказать "Спасибо" автору можно здесь:</TextBlock>
+            <TextBlock HorizontalAlignment="Center" Padding="0,0,0,10">(Клик по номеру копирует его в буфер обмена)</TextBlock>
+            <TextBlock>
+                QIWI: 
+                <TextBlock>
+                    2200730245320490
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction
+                                Command="{Binding CopyToClipboardCmd}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TextBlock}, Path=Text}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBlock>
+            </TextBlock>
+            <TextBlock>
+                ЮMoney: 
+                <TextBlock>
+                    4100118072030777
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction
+                                Command="{Binding CopyToClipboardCmd}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TextBlock}, Path=Text}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBlock>
+            </TextBlock>
+            <TextBlock Margin="0,0,0,20">
+                Сбер: 
+                <TextBlock>
+                    2202205625148686
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDown">
+                            <i:InvokeCommandAction
+                                Command="{Binding CopyToClipboardCmd}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=TextBlock}, Path=Text}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBlock>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
